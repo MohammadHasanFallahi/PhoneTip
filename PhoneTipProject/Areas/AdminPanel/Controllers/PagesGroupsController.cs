@@ -36,7 +36,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
