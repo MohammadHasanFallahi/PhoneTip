@@ -24,9 +24,10 @@
                 @Html.DisplayFor(modelItem => item.GroupTitle)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.GroupID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.GroupID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.GroupID })
+                <a class="btn btn-sm btn-warning" onclick="btnEdit(@item.GroupID)">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a> |
+                <a class="btn btn-sm btn-danger" onclick="btnDelete(@item.GroupID)"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
     }
@@ -44,6 +45,9 @@
             <div class="modal-body" id="myModalBody">
 
             </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                </div>*@
         </div>
     </div>
 </div>
@@ -62,5 +66,23 @@
             });
 
         });
+
+        function btnEdit(id) {
+
+            $.get("/AdminPanel/PagesGroups/Edit/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("ویرایش");
+                $("#myModalBody").html(result);
+            });
+        }
+
+        function btnDelete(id) {
+            $.get("/AdminPanel/PagesGroups/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("حذف");
+                $("#myModalBody").html(result);
+            });
+        }
+
     </script>
 }

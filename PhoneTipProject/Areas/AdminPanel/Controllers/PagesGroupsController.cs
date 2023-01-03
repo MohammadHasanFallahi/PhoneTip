@@ -31,7 +31,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pagesGroup);
+            return PartialView(pagesGroup);
         }
 
         public ActionResult Create()
@@ -50,7 +50,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
                 unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
-            return View(pagesGroup);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int? id)
@@ -64,7 +64,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pagesGroup);
+            return PartialView(pagesGroup);
         }
 
         [HttpPost]
@@ -78,7 +78,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
                 unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
-            return View(pagesGroup);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int? id)
@@ -92,7 +92,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pagesGroup);
+            return PartialView(pagesGroup);
         }
 
         [HttpPost, ActionName("Delete")]
