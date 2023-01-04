@@ -15,6 +15,8 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
     public class PagesGroupsController : Controller
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
+
+        [HttpGet]
         public ActionResult Index()
         {
             return View(unitOfWork.pagegroup.GetAll());
@@ -34,6 +36,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             return PartialView(pagesGroup);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             return PartialView();
@@ -50,9 +53,10 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
                 unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,6 +85,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,6 +109,12 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             unitOfWork.Save();
             unitOfWork.Dispose();
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            unitOfWork.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
