@@ -14,7 +14,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 {
     public class PagesGroupsController : Controller
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         [HttpGet]
         public ActionResult Index()
