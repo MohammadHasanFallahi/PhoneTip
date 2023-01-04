@@ -53,7 +53,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
                 unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
