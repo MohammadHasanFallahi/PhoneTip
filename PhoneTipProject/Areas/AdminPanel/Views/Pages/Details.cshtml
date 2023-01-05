@@ -1,0 +1,82 @@
+﻿@model PhoneTipProject.Models.DataLayer.Pages
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pages</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PagesGroup.GroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PagesGroup.GroupTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Visit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowInSlider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowInSlider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

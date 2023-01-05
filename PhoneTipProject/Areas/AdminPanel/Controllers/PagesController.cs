@@ -12,14 +12,15 @@ using PhoneTipProject.Models.UnitOfWork;
 
 namespace PhoneTipProject.Areas.AdminPanel.Controllers
 {
-    public class PagesGroupsController : Controller
+    public class PagesController : Controller
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         [HttpGet]
         public ActionResult Index()
         {
-            return View(unitOfWork.pagegroup.GetAll());
+            var pages = unitOfWork.Pages.GetAll();
+            return View(pages);
         }
 
         [HttpGet]
@@ -29,32 +30,36 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PagesGroup pagesGroup = unitOfWork.pagegroup.Find(id);
-            if (pagesGroup == null)
+            Pages pages = unitOfWork.Pages.Find(id);
+            if (pages == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(pagesGroup);
+            return View(pages);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-            return PartialView();
+            ViewBag.GroupID = new SelectList(unitOfWork.pagegroup.GetAll(), "GroupID", "GroupTitle");
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GroupID,GroupTitle")] PagesGroup pagesGroup)
+        public ActionResult Create([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages)
         {
             if (ModelState.IsValid)
             {
-                unitOfWork.pagegroup.Add(pagesGroup);
+                pages.CreateDate = DateTime.Now;
+                unitOfWork.Pages.Add(pages);
                 unitOfWork.Save();
                 unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+
+            ViewBag.GroupID = new SelectList(unitOfWork.pagegroup.GetAll(), "GroupID", "GroupTitle", pages.GroupID);
+            return View(pages);
         }
 
         [HttpGet]
@@ -64,26 +69,30 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PagesGroup pagesGroup = unitOfWork.pagegroup.Find(id);
-            if (pagesGroup == null)
+            Pages pages = unitOfWork.Pages.Find(id);
+            if (pages == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(pagesGroup);
+            ViewBag.GroupID = new SelectList(unitOfWork.pagegroup.GetAll(), "GroupID", "GroupTitle", pages.GroupID);
+            return View(pages);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GroupID,GroupTitle")] PagesGroup pagesGroup)
+        public ActionResult Edit([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages)
         {
             if (ModelState.IsValid)
             {
-                unitOfWork.pagegroup.Update(pagesGroup);
+                pages.CreateDate = DateTime.Now;
+                unitOfWork.Pages.Update(pages);
                 unitOfWork.Save();
                 unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            ViewBag.GroupID = new SelectList(unitOfWork.pagegroup.GetAll(), "GroupID", "GroupTitle", pages.GroupID);
+            return View(pages);
         }
 
         [HttpGet]
@@ -93,20 +102,21 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PagesGroup pagesGroup = unitOfWork.pagegroup.Find(id);
-            if (pagesGroup == null)
+            Pages pages = unitOfWork.Pages.Find(id);
+            if (pages == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(pagesGroup);
+            return View(pages);
         }
+
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PagesGroup pagesGroup = unitOfWork.pagegroup.Find(id);
-            unitOfWork.pagegroup.Remove(pagesGroup);
+            Pages pages = unitOfWork.Pages.Find(id);
+            unitOfWork.Pages.Remove(pages);
             unitOfWork.Save();
             unitOfWork.Dispose();
             return RedirectToAction("Index");

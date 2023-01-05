@@ -22,9 +22,11 @@ namespace PhoneTipProject.Models.DataLayer
         [Display(Name = "توضیح مختصر")]
         [Required(ErrorMessage = "لطفا توضیح مختصر را وارد کنید")]
         [MaxLength(350)]
+        [DataType(DataType.MultilineText)]
         public string ShortDescription { get; set; }
         [Display(Name = "متن خبر")]
         [Required(ErrorMessage = "لطفا متن خبر را وارد کنید")]
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
         [Display(Name = "بازدید")]
         public int Visit { get; set; }
