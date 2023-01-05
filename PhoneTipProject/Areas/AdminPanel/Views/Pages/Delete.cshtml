@@ -1,4 +1,5 @@
-﻿@model PhoneTipProject.Models.DataLayer.Pages
+﻿@using PhoneTipProject.Utilities.ExtensionMethods;
+@model PhoneTipProject.Models.DataLayer.Pages
 
 @{
     ViewBag.Title = "Delete";
@@ -6,13 +7,13 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>آیا از حذف @Model.Titel مطمئن هستید؟</h3>
 <div>
-    <h4>Pages</h4>
+    <h4>حذف خبر</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PagesGroup.GroupTitle)
+            @Html.DisplayNameFor(model => model.PagesGroup.GroupTitle):
         </dt>
 
         <dd>
@@ -20,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Titel)
+            @Html.DisplayNameFor(model => model.Titel):
         </dt>
 
         <dd>
@@ -28,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ShortDescription)
+            @Html.DisplayNameFor(model => model.ShortDescription):
         </dt>
 
         <dd>
@@ -36,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Text):
         </dt>
 
         <dd>
@@ -44,7 +45,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Visit)
+            @Html.DisplayNameFor(model => model.Visit):
         </dt>
 
         <dd>
@@ -52,15 +53,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            @Html.DisplayNameFor(model => model.ImageUrl):
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
+            @if (Model.ImageUrl != null)
+            {
+                <img src="@Model.ImageUrl" class="thumbnail" style="max-width:150px" />
+            }
+            else
+            {
+                <p>تصویری برای این خبر ثبت نشده است</p>
+            }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ShowInSlider)
+            @Html.DisplayNameFor(model => model.ShowInSlider):
         </dt>
 
         <dd>
@@ -68,11 +76,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
+            @Html.DisplayNameFor(model => model.CreateDate):
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreateDate)
+            @Model.CreateDate.ToShamsi()
         </dd>
 
     </dl>
@@ -80,9 +88,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <a class="btn btn-info" href="/AdminPanel/Pages/Index">بازگشت</a> |
+    <input type="submit" value="حذف" class="btn btn-danger" />
+</div>
     }
 </div>

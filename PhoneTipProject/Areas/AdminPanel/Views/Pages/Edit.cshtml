@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Pages</h4>
+    <h4>ویرایش خبر</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.PageID)
@@ -61,6 +61,10 @@
             {
                 <img src="@Model.ImageUrl" class="thumbnail" style="max-width:150px"/>
             }
+            else
+            {
+                <p>تصویری برای این خبر ثبت نشده است</p>
+            }
         </div>
     </div>
 
@@ -84,12 +88,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="ویرایش" class="btn btn-warning" />
         </div>
     </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-info" href="/AdminPanel/Pages/Index">بازگشت</a>
 </div>

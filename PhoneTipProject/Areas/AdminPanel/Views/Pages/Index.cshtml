@@ -63,8 +63,8 @@
             </td>
             <td>
                 <a class="btn btn-sm btn-info" href="/AdminPanel/Pages/Details/@item.PageID" data-toggle="bottom" title="جزئیات"><i class="glyphicon glyphicon-exclamation-sign"></i></a> |
-                @Html.ActionLink("Details", "Details", new { id = item.PageID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PageID })
+                <a class="btn btn-sm btn-warning" href="/AdminPanel/Pages/Edit/@item.PageID" data-toggle="bottom" title="ویرایش"><i class="glyphicon glyphicon-edit"></i></a> |
+                <a class="btn btn-sm btn-danger" href="/AdminPanel/Pages/Delete/@item.PageID" data-toggle="bottom" title="حذف"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
     }
