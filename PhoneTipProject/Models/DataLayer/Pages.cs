@@ -35,6 +35,7 @@ namespace PhoneTipProject.Models.DataLayer
         [Display(Name = "اسلایدر")]
         public bool ShowInSlider { get; set; }
         [Display(Name = "تاریخ ایجاد")]
+        [DisplayFormat(DataFormatString ="{0 :yyyy/MM/dd}")]
         public DateTime CreateDate { get; set; }
 
         [ForeignKey("GroupID")]

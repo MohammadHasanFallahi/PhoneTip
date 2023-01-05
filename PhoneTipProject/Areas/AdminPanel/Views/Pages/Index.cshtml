@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PhoneTipProject.Models.DataLayer.Pages>
+﻿@using PhoneTipProject.Utilities.ExtensionMethods;
+@model IEnumerable<PhoneTipProject.Models.DataLayer.Pages>
 
 @{
     ViewBag.Title = "Index";
@@ -7,10 +8,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-success" href="/AdminPanel/Pages/Create">افزودن خبر جدید</a>
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.PagesGroup.GroupTitle)
         </th>
@@ -18,16 +22,7 @@
             @Html.DisplayNameFor(model => model.Titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Visit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ShowInSlider)
@@ -38,38 +33,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PagesGroup.GroupTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Visit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShowInSlider)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PageID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PageID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PageID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.ImageUrl != null)
+                {
+                    <img src="@item.ImageUrl" class="thumbnail" style="max-width:120px;" />
+                }
+                else
+                {
+                    <p>تصویری ثبت نشده است</p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PagesGroup.GroupTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowInSlider)
+            </td>
+            <td>
+                @item.CreateDate.ToShamsi()
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PageID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PageID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PageID })
+            </td>
+        </tr>
+    }
 
 </table>

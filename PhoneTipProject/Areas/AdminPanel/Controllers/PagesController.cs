@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -88,10 +89,22 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages)
+        public ActionResult Edit([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages,HttpPostedFileBase imgurl)
         {
             if (ModelState.IsValid)
             {
+                if (imgurl != null)
+                {
+                    FileInfo fileInfo = new FileInfo(Server.MapPath("~"+pages.ImageUrl));
+                    if (fileInfo.Exists)
+                    { 
+                        fileInfo.Delete();
+                    }
+                    string fileurl = "/Upload/Pages/" + Guid.NewGuid().ToString().Substring(0, 8) + imgurl.FileName;
+                    imgurl.SaveAs(Server.MapPath("~" + fileurl));
+                    pages.ImageUrl = fileurl;
+                }
+
                 pages.CreateDate = DateTime.Now;
                 unitOfWork.Pages.Update(pages);
                 unitOfWork.Save();
@@ -123,6 +136,11 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Pages pages = unitOfWork.Pages.Find(id);
+            FileInfo fileInfo = new FileInfo(Server.MapPath("~" + pages.ImageUrl));
+            if (fileInfo.Exists)
+            {
+                fileInfo.Delete();
+            }
             unitOfWork.Pages.Remove(pages);
             unitOfWork.Save();
             unitOfWork.Dispose();
