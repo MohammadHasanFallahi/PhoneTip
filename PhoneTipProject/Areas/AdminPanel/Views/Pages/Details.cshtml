@@ -1,4 +1,5 @@
-﻿@model PhoneTipProject.Models.DataLayer.Pages
+﻿@using PhoneTipProject.Utilities.ExtensionMethods;
+@model PhoneTipProject.Models.DataLayer.Pages
 
 @{
     ViewBag.Title = "Details";
@@ -7,11 +8,11 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Pages</h4>
+    <h4>جزئیات خبر</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PagesGroup.GroupTitle)
+            @Html.DisplayNameFor(model => model.PagesGroup.GroupTitle):
         </dt>
 
         <dd>
@@ -19,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Titel)
+            @Html.DisplayNameFor(model => model.Titel):
         </dt>
 
         <dd>
@@ -27,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ShortDescription)
+            @Html.DisplayNameFor(model => model.ShortDescription):
         </dt>
 
         <dd>
@@ -35,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Text):
         </dt>
 
         <dd>
@@ -43,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Visit)
+            @Html.DisplayNameFor(model => model.Visit):
         </dt>
 
         <dd>
@@ -51,15 +52,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            @Html.DisplayNameFor(model => model.ImageUrl):
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
+            @if (Model.ImageUrl != null)
+            {
+                <img src="@Model.ImageUrl" style="max-width:150px;" />
+            }
+            else
+            {
+                <p>تصویری برای این خبر ثبت نشده است</p>
+            }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ShowInSlider)
+            @Html.DisplayNameFor(model => model.ShowInSlider):
         </dt>
 
         <dd>
@@ -67,16 +75,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
+            @Html.DisplayNameFor(model => model.CreateDate):
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreateDate)
+            @Model.CreateDate.ToShamsi()
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PageID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-info" href="/AdminPanel/Pages/Index">بازگشت</a> |
+    <a class="btn btn-warning" href="/AdminPanel/Pages/Edit/@Model.PageID">ویرایش</a>
 </p>

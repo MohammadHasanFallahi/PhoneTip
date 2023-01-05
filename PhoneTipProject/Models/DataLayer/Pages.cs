@@ -15,7 +15,7 @@ namespace PhoneTipProject.Models.DataLayer
         [Display(Name = "گروه صفحه")]
         [Required(ErrorMessage = "لطفا گروه خبر را مشخص کنید")]
         public int GroupID { get; set; }
-        [Display(Name = "عنوان")]
+        [Display(Name = "عنوان خبر")]
         [Required(ErrorMessage = " لطفا عنوان خبر را مشخص کنید")]
         [MaxLength(250)]
         public string Titel { get; set; }
