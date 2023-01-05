@@ -22,6 +22,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             return View(unitOfWork.pagegroup.GetAll());
         }
 
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)

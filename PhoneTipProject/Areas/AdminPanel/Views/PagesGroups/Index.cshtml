@@ -24,10 +24,12 @@
                 @Html.DisplayFor(modelItem => item.GroupTitle)
             </td>
             <td>
-                <a class="btn btn-sm btn-warning" onclick="btnEdit(@item.GroupID)">
+                <a class="btn btn-sm btn-warning" onclick="btnEdit(@item.GroupID)" data-toggle="bottom" title="ویرایش">
                     <i class="glyphicon glyphicon-edit"></i>
                 </a> |
-                <a class="btn btn-sm btn-danger" onclick="btnDelete(@item.GroupID)"><i class="glyphicon glyphicon-trash"></i></a>
+                <a class="btn btn-sm btn-danger" onclick="btnDelete(@item.GroupID)" data-toggle="bottom" title="حذف">
+                <i class="glyphicon glyphicon-trash"></i>
+                </a>
             </td>
         </tr>
     }
