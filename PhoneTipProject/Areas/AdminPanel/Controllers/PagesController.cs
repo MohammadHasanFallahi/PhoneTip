@@ -47,10 +47,17 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages)
+        public ActionResult Create([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages,HttpPostedFileBase imgurl)
         {
             if (ModelState.IsValid)
             {
+                if (imgurl != null)
+                {
+                    string fileurl = "/Upload/Pages/" + Guid.NewGuid().ToString().Substring(0, 8) + imgurl.FileName;
+                    imgurl.SaveAs(Server.MapPath("~" + fileurl));
+                    pages.ImageUrl = fileurl;
+                }
+                pages.Visit = 0;
                 pages.CreateDate = DateTime.Now;
                 unitOfWork.Pages.Add(pages);
                 unitOfWork.Save();
