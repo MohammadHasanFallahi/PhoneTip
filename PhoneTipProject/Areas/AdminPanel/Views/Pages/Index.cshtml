@@ -64,9 +64,42 @@
             <td>
                 <a class="btn btn-sm btn-info" href="/AdminPanel/Pages/Details/@item.PageID" data-toggle="bottom" title="جزئیات"><i class="glyphicon glyphicon-exclamation-sign"></i></a> |
                 <a class="btn btn-sm btn-warning" href="/AdminPanel/Pages/Edit/@item.PageID" data-toggle="bottom" title="ویرایش"><i class="glyphicon glyphicon-edit"></i></a> |
-                <a class="btn btn-sm btn-danger" href="/AdminPanel/Pages/Delete/@item.PageID" data-toggle="bottom" title="حذف"><i class="glyphicon glyphicon-trash"></i></a>
+                <a class="btn btn-sm btn-danger" onclick="DeletePage(@item.PageID)" data-toggle="bottom" title="حذف"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
     }
 
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+<!--End Modal -->
+
+@section scripts{
+    <script src="~/Scripts/modal.js"></script>
+    <script type="text/javascript">
+        function DeletePage(id) {
+            $.get("/AdminPanel/Pages/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("حذف");
+                $("#myModalBody").html(result);
+            });
+        }
+    </script>
+
+}

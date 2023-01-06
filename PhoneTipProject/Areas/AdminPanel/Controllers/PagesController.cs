@@ -127,7 +127,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pages);
+            return PartialView(pages);
         }
 
 

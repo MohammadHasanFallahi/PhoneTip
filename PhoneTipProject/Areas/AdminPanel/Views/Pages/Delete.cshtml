@@ -5,11 +5,8 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>آیا از حذف @Model.Titel مطمئن هستید؟</h3>
+<h3>آیا از حذف (@Model.Titel) مطمئن هستید؟</h3>
 <div>
-    <h4>حذف خبر</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -34,14 +31,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Text):
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Text)
         </dd>
 
         <dt>
