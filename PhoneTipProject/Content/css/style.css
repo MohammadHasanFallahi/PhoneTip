@@ -176,7 +176,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
   color: #fff
 }
 .main-menu .container > ul > li a:hover,.main-menu .container > ul > li span:hover{
-  color: #FF393A;
+  color: #a0d2eb;
   cursor: pointer;
 }
 .main-menu .container > ul > li > ul{
@@ -506,7 +506,7 @@ footer {
     color: #fff
 }
 .access-links ul li a:hover{
-    color:#FF393A;
+    color:#a0d2eb;
     padding-right: 5px
 }
 
@@ -541,9 +541,9 @@ footer {
     text-align: center;
     font-size: 20px
 }
-.socials a:hover{
-    color: #FF393A
-}
+    .socials a:hover {
+        color: #a0d2eb
+    }
 
 .col-md-5.col-md-offset-1.col-sm-12.col-xs-12 p{
     line-height: 24px;
