@@ -465,8 +465,8 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 .category-section li:last-child{border-bottom: 0}
 .category-section li:before{position: absolute; font-family: 'Fontawesome'; content: '\f104'; font-size: 15px; color: #69686D; right: 19px; top: 6px}
 .category-section li a{color: #575757}
-.category-section li a:hover{color: #DD0C0C; padding-right: 10px}
-.category-section li span{ background-color: #ff393a;
+.category-section li a:hover{color: #a0d2eb; padding-right: 10px}
+.category-section li span{ background-color: #0f2862;
     color: #fff;
     line-height: 22px;
     margin-right: 8px;
