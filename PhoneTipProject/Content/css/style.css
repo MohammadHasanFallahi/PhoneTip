@@ -439,7 +439,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 }
 
 .category-section{
-    border:1px solid #dfdfdf;
+    border:1px solid #a0d2eb;
     margin-bottom: 20px
 }
 
@@ -454,7 +454,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
   right: 14px;
   top: 15px;
   font-size: 22px;
-  color: #FF5151
+  color: #a0d2eb
 }
 .category-section header h3{
   font-size: 18px;
