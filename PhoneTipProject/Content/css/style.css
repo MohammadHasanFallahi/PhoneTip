@@ -444,7 +444,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 }
 
 .category-section header{
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #a0d2eb;
   padding: 15px;
   color: #2D2927;
   position: relative;
@@ -461,7 +461,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
   color: #2D2927;
   padding-right: 40px
 }
-.category-section li{position: relative; padding-right: 12px; line-height: 26px; padding: 6px 32px; border-bottom: 1px dashed #dfdfdf}
+.category-section li{position: relative; padding-right: 12px; line-height: 26px; padding: 6px 32px; border-bottom: 1px dashed #a0d2eb}
 .category-section li:last-child{border-bottom: 0}
 .category-section li:before{position: absolute; font-family: 'Fontawesome'; content: '\f104'; font-size: 15px; color: #69686D; right: 19px; top: 6px}
 .category-section li a{color: #575757}
