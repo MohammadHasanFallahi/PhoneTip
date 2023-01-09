@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using PhoneTipProject.Models.UnitOfWork;
+using PhoneTipProject.ViewModels;
+
+namespace PhoneTipProject.Controllers
+{
+    public class NewsController : Controller
+    {
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ShowGroups()
+        {
+            var list_pagegroups = unitOfWork.pagegroup.GetAll().Select(x => new ShowGroupsViewModel() { GroupID = x.GroupID, GroupTitle = x.GroupTitle, PagesCount = x.Pages.Count }).ToList();
+            return PartialView(list_pagegroups);
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            unitOfWork.Dispose();
+            base.Dispose(disposing);
+        }
+    }
+}
