@@ -301,6 +301,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_DefualtLayoutPage.cshtml" />
     <Content Include="Views\News\ShowGroups.cshtml" />
+    <Content Include="Views\News\ShowGroupsInMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

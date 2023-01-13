@@ -1,0 +1,10 @@
+﻿@model IEnumerable<PhoneTipProject.Models.DataLayer.PagesGroup>
+<span>گروه های خبری</span>
+<ul>
+
+    @foreach (var item in Model)
+    {
+        <li><a href="">@item.GroupTitle</a></li>
+    }
+
+</ul>

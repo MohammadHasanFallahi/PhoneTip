@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PhoneTipProject.Models.DataLayer;
 using PhoneTipProject.Models.UnitOfWork;
 using PhoneTipProject.ViewModels;
 
@@ -23,6 +24,12 @@ namespace PhoneTipProject.Controllers
             return PartialView(list_pagegroups);
         }
 
+        [HttpGet]
+        public ActionResult ShowGroupsInMenu()
+        {
+            IEnumerable<PagesGroup> pagesGroup = unitOfWork.pagegroup.GetAll();
+            return PartialView(pagesGroup);
+        }
 
         protected override void Dispose(bool disposing)
         {
