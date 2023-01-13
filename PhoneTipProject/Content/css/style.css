@@ -183,7 +183,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
     position: absolute;
     top: 40px;
     right: 0;
-    background-color: #2D2927;
+    background-color: #0f2862;
     z-index: 100;
     padding: 15px;
     -webkit-border-bottom-right-radius: 3px;
@@ -204,7 +204,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
     right: 0;
     font-family: 'Fontawesome';
     font-family: 12px;
-    color: #FF393A;
+    color: #a0d2eb;
     content: '\f104';
     top: 5px
 }
