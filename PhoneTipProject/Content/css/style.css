@@ -211,12 +211,12 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 
 
 .last-news-side{
-  border:1px solid #dfdfdf;
+  border:1px solid #a0d2eb;
   padding: 15px;
   margin-bottom: 25px
 }
 .last-news-side header{
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #a0d2eb;
   padding-bottom: 15px;
   margin-bottom: 10px;
   color: #2D2927;
@@ -234,7 +234,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 }
 .last-news-side ul li{
   padding: 15px;
-  border-bottom: 1px dashed #dfdfdf
+  border-bottom: 1px dashed #a0d2eb
 }
 .last-news-side ul li:last-child{
   border-bottom: 0
