@@ -302,6 +302,7 @@
     <Content Include="Views\Shared\_DefualtLayoutPage.cshtml" />
     <Content Include="Views\News\ShowGroups.cshtml" />
     <Content Include="Views\News\ShowGroupsInMenu.cshtml" />
+    <Content Include="Views\News\ShowTopNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

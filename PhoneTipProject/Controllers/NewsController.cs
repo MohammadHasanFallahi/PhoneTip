@@ -31,6 +31,13 @@ namespace PhoneTipProject.Controllers
             return PartialView(pagesGroup);
         }
 
+        [HttpGet]
+        public ActionResult ShowTopNews()
+        {
+            var topnews = unitOfWork.Pages.GetAll().OrderByDescending(x => x.Visit).Take(4);
+            return PartialView(topnews);
+        }
+
         protected override void Dispose(bool disposing)
         {
             unitOfWork.Dispose();
