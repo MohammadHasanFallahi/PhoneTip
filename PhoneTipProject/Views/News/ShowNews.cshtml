@@ -30,13 +30,13 @@
 
 @*<div class="keywords border-radius">
 
-    @foreach (var item in Model.Tags.Split(','))
-    {
-        <a href="/Search?q=@item"> @item </a>
+        @foreach (var item in Model.Tags.Split(','))
+        {
+            <a href="/Search?q=@item"> @item </a>
 
-    }
+        }
 
-</div>*@
+    </div>*@
 
 <section class="comment-layer">
     <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5><span> @Model.PageComments.Count دیدگاه </span> </header>
@@ -57,4 +57,21 @@
         <input value="ثبت دیدگاه ارزشمند شما " type="button" onclick="addComment()">
     </form>
 </section>
+
+<script type="text/javascript">
+
+        function addComment() {
+            $.ajax({
+                url: "/News/AddComments/" + @Model.PageID,
+                type: "Get",
+                data: { FullName: $("#txtName").val(), Email: $("#txtEmail").val(), Comment: $("#txtComment").val() }
+        }).done(function(result) {
+            $("#commentList").html(result);
+            $("#txtName").val("");
+            $("#txtEmail").val("");
+            $("#txtComment").val("");
+        });
+      }
+
+</script>
 

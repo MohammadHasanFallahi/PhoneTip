@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 .comment-layer,
 .comment-layer, .comment-layer header span, .comment-layer ul li,
 .comment-layer ul li img, .comment-layer ul li .answer-button,
-.comment-form div input, .comment-form input[type="submit"],
+.comment-form div input, .comment-form input[type="button"],
 .comment-form textarea {
     border-radius: 4px;
     -moz-border-radius: 4px;
@@ -942,7 +942,7 @@ footer {
         line-height: 22px
     }
 
-    .comment-form input[type="submit"] {
+    .comment-form input[type="button"] {
         width: 100%;
         border: 0;
         padding: 5px;
@@ -951,7 +951,7 @@ footer {
         line-height: 30px
     }
 
-        .comment-form input[type="submit"]:hover, .comment-form input[type="submit"]:active {
+        .comment-form input[type="button"]:hover, .comment-form input[type="button"]:active {
             background-color: #219A13;
             cursor: pointer
         }

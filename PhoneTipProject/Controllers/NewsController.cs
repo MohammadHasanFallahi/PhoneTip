@@ -74,6 +74,24 @@ namespace PhoneTipProject.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        public ActionResult AddComments(int id, string FullName, string Email, string Comment)
+        {
+            PageComments pageComments = new PageComments()
+            {
+                PageID = id,
+                FullName = FullName,
+                Email = Email,
+                Comment = Comment,
+                CreateDate = DateTime.Now,
+                IsActive = true
+            };
+            unitOfWork.PageComments.Add(pageComments);
+            unitOfWork.Save();
+            unitOfWork.Dispose();
+            return null;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
