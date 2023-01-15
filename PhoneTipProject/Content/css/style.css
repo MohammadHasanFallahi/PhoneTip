@@ -329,19 +329,19 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 #slider-one .owl-nav{ position: absolute; bottom: -40px;  left: 0}
 #slider-one .owl-nav .owl-prev,
 #slider-one .owl-nav .owl-next{
-    border-bottom: 3px solid #FF393A;
+    border-bottom: 3px solid #a0d2eb;
     width: 40px;
     height: 40px;
     color: #fff;
     position: relative;
     float: left;
     margin-right: 2px;
-    background-color: #2D2927;
+    background-color: #0f2862;
     display: block !important;
 }
 #slider-one .owl-nav .owl-prev:hover i,
 #slider-one .owl-nav .owl-next:hover i{
-    color: #FF393A
+    color: #a0d2eb
 }
 #slider-one .owl-nav .owl-prev i,
 #slider-one .owl-nav .owl-next i{
