@@ -307,6 +307,7 @@
     <Content Include="Views\News\ShowLastNews.cshtml" />
     <Content Include="Views\News\ShowNewsInArshive.cshtml" />
     <Content Include="Views\News\ShowNews.cshtml" />
+    <Content Include="Views\News\ShowComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

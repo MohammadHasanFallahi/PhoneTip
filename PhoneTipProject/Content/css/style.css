@@ -741,11 +741,11 @@ footer {
 
 
 .single-news {
-    border: 1px solid #dfdfdf;
+    border: 1px solid #a0d2eb;
 }
 
     .single-news header {
-        border-bottom: 1px solid #dfdfdf;
+        border-bottom: 1px solid #a0d2eb;
         padding: 10px 15px;
         margin-bottom: 10px;
         color: #2D2927;
@@ -815,20 +815,20 @@ footer {
 
 .comment-layer {
     width: 100%;
-    border: 1px solid #ccc;
+    border: 1px solid #a0d2eb;
     margin: 15px 0
 }
 
     .comment-layer header {
         position: relative;
         height: 45px;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #a0d2eb;
         padding: 0 60px 15px 15px
     }
 
         .comment-layer header i {
             font-size: 32px;
-            color: #505050;
+            color: #0EB501;
             position: absolute;
             right: 15px;
             top: 5px
@@ -843,7 +843,7 @@ footer {
         .comment-layer header span {
             font-size: 15px;
             color: #fff;
-            background-color: #FF393A;
+            background-color: #0f2862;
             position: absolute;
             line-height: 30px;
             padding: 0 15px;
@@ -857,7 +857,7 @@ footer {
 
         .comment-layer ul li {
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #a0d2eb;
             margin-bottom: 15px;
             position: relative;
             color: #848484
@@ -896,7 +896,7 @@ footer {
         color: #505050;
         margin-top: 30px;
         line-height: 40px;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #a0d2eb;
         padding: 0 20px 10px
     }
 

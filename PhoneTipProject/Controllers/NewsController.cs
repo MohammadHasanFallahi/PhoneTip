@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhoneTipProject.Models.DataLayer;
@@ -59,7 +60,7 @@ namespace PhoneTipProject.Controllers
         public ActionResult ShowNews(int id)
         {
             if (id == null)
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             else
             {
                 Pages pages = unitOfWork.Pages.Find(id);
@@ -78,19 +79,34 @@ namespace PhoneTipProject.Controllers
         [HttpGet]
         public ActionResult AddComments(int id, string FullName, string Email, string Comment)
         {
-            PageComments pageComments = new PageComments()
+            if (FullName.Trim() != "" && Email.Trim() != "" && Comment.Trim() != "")
             {
-                PageID = id,
-                FullName = FullName,
-                Email = Email,
-                Comment = Comment,
-                CreateDate = DateTime.Now,
-                IsActive = true
-            };
-            unitOfWork.PageComments.Add(pageComments);
-            unitOfWork.Save();
-            unitOfWork.Dispose();
-            return null;
+                PageComments pageComments = new PageComments()
+                {
+                    PageID = id,
+                    FullName = FullName,
+                    Email = Email,
+                    Comment = Comment,
+                    CreateDate = DateTime.Now,
+                    IsActive = true
+                };
+                unitOfWork.PageComments.Add(pageComments);
+                unitOfWork.Save();
+                var page_message = unitOfWork.PageComments.GetAll().Where(x => x.PageID == id);
+                unitOfWork.Dispose();
+                return PartialView("ShowComments", page_message);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ShowComments(int id)
+        {
+            var page_message = unitOfWork.PageComments.GetAll().Where(x => x.PageID == id);
+            return PartialView(page_message);
         }
         protected override void Dispose(bool disposing)
         {

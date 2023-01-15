@@ -39,10 +39,10 @@
     </div>*@
 
 <section class="comment-layer">
-    <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5><span> @Model.PageComments.Count دیدگاه </span> </header>
+    <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5><span> @Model.PageComments.Count() دیدگاه </span> </header>
     <ul id="commentList">
 
-        @*@Html.Action("ShowComments")*@
+        @Html.Action("ShowComments", "News")
 
     </ul>
 
@@ -60,18 +60,24 @@
 
 <script type="text/javascript">
 
-        function addComment() {
-            $.ajax({
-                url: "/News/AddComments/" + @Model.PageID,
-                type: "Get",
-                data: { FullName: $("#txtName").val(), Email: $("#txtEmail").val(), Comment: $("#txtComment").val() }
+    function addComment() {
+        if ($("#txtName").val().trim() == "" || $("#txtEmail").val().trim() == "" || $("#txtComment").val().trim() == "") {
+            alert("لطفا جهت ثبت کامنت اطلاعات خود را وارد کنید!");
+            return false;
+        }
+        $.ajax({
+            url: "/News/AddComments/" + @Model.PageID,
+            type: "Get",
+            data: { FullName: $("#txtName").val(), Email: $("#txtEmail").val(), Comment: $("#txtComment").val() }
         }).done(function(result) {
+
             $("#commentList").html(result);
             $("#txtName").val("");
             $("#txtEmail").val("");
             $("#txtComment").val("");
+
         });
-      }
+    }
 
 </script>
 
