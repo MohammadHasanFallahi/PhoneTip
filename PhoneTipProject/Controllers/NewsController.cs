@@ -53,9 +53,33 @@ namespace PhoneTipProject.Controllers
             ViewBag.Titel = Titel;
             return View(pages);
         }
+
+        [HttpGet]
+        [Route("News/{id}")]
+        public ActionResult ShowNews(int id)
+        {
+            if (id == null)
+                return HttpNotFound();
+            else
+            {
+                Pages pages = unitOfWork.Pages.Find(id);
+                if (pages == null)
+                    return HttpNotFound();
+                else
+                {
+                    pages.Visit += 1;
+                    unitOfWork.Pages.Update(pages);
+                    unitOfWork.Save();
+                    return View(pages);
+                }
+            }
+        }
         protected override void Dispose(bool disposing)
         {
-            unitOfWork.Dispose();
+            if (disposing)
+            {
+                unitOfWork.Dispose();
+            }
             base.Dispose(disposing);
         }
     }
