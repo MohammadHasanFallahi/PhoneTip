@@ -38,10 +38,20 @@ namespace PhoneTipProject.Controllers
             return PartialView(topnews);
         }
 
+        [HttpGet]
         public ActionResult ShowLastNews()
         {
             IEnumerable<Pages> list_pages = unitOfWork.Pages.GetAll().OrderByDescending(x => x.CreateDate).Take(6);
             return PartialView(list_pages);
+        }
+
+        [HttpGet]
+        [Route("Group/{GroupID}/{Titel}")]
+        public ActionResult ShowNewsInArshive(int GroupID, string Titel)
+        {
+            IEnumerable<Pages> pages = unitOfWork.Pages.GetAll().Where(x => x.GroupID == GroupID);
+            ViewBag.Titel = Titel;
+            return View(pages);
         }
         protected override void Dispose(bool disposing)
         {
