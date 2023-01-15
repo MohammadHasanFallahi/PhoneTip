@@ -259,7 +259,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 
 
 .news-slider{
-  border:1px solid #dfdfdf;
+  border:1px solid #a0d2eb;
   direction: ltr;
 }
 .news-archive{
@@ -295,7 +295,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
   float: right;
   width: 40%;
   padding: 15px;
-  border-left: 1px solid #dfdfdf
+  border-left: 1px solid #a0d2eb
 }
 #slider-one .item .left-side{
   float: right;
@@ -376,12 +376,12 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 
 
 
-.last-news-section{
-  border:1px solid #dfdfdf;
-  margin-bottom: 20px
+.last-news-section {
+    border: 1px solid #a0d2eb;
+    margin-bottom: 20px
 }
 .last-news-section header{
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #a0d2eb;
   padding: 15px;
   color: #2D2927;
   position: relative;
@@ -398,7 +398,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 }
 .last-news-section ul li{
   padding: 15px;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #a0d2eb;
   position: relative;
 }
 .last-news-section ul li:last-child{

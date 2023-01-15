@@ -38,6 +38,11 @@ namespace PhoneTipProject.Controllers
             return PartialView(topnews);
         }
 
+        public ActionResult ShowLastNews()
+        {
+            IEnumerable<Pages> list_pages = unitOfWork.Pages.GetAll().OrderByDescending(x => x.CreateDate).Take(6);
+            return PartialView(list_pages);
+        }
         protected override void Dispose(bool disposing)
         {
             unitOfWork.Dispose();
