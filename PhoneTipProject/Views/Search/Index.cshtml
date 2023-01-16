@@ -4,8 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<section class="last-news-section border-radius margin-top-60">
-    <header><i class="icons icon-doc-2"></i>  <h3>تعداد "@Model.Count()" با عبارت "@ViewBag.Search" یافت شد .</h3> </header>
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">خانه </a></li>
+    <li class="breadcrumb-item" style="color:white;">جستجو</li>
+    <li class="breadcrumb-item active" style="color:white;"> @ViewBag.Search </li>
+</ul>
+<section class="last-news-section border-radius margin-top-40">
+    <header><i class="icons icon-doc-2"></i>  <h3>تعداد "@Model.Count()" با  عبارت "@ViewBag.Search" یافت شد .</h3> </header>
     <ul>
 
         @foreach (var item in Model)
