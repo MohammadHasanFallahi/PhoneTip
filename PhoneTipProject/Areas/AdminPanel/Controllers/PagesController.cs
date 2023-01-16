@@ -48,7 +48,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages,HttpPostedFileBase imgurl)
+        public ActionResult Create([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate,Tags")] Pages pages,HttpPostedFileBase imgurl)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate")] Pages pages,HttpPostedFileBase imgurl)
+        public ActionResult Edit([Bind(Include = "PageID,GroupID,Titel,ShortDescription,Text,Visit,ImageUrl,ShowInSlider,CreateDate,Tags")] Pages pages,HttpPostedFileBase imgurl)
         {
             if (ModelState.IsValid)
             {
