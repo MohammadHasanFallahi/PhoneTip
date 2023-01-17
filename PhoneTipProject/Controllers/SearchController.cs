@@ -18,7 +18,7 @@ namespace PhoneTipProject.Controllers
         public ActionResult Index(string q)
         {
             ViewBag.Search = q;
-            var search = unitOfWork.Pages.GetAll().Where(x => x.Text.Contains(q) || x.Titel.Contains(q)  || x.ShortDescription.Contains(q)).Distinct();
+            var search = unitOfWork.Pages.GetAll().Where(x => x.Text.Contains(q) || x.Tags.Contains(q)|| x.Titel.Contains(q)  || x.ShortDescription.Contains(q)).Distinct();
             return View(search);
         }
 
