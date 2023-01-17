@@ -39,6 +39,7 @@ namespace PhoneTipProject.Models.DataLayer
         public DateTime CreateDate { get; set; }
 
         [Display(Name = "کلمات کلیدی")]
+        [Required(ErrorMessage = " لطفا کلمات کلیدی خبر را مشخص کنید")]
         public string Tags { get; set; }
 
         [ForeignKey("GroupID")]

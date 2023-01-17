@@ -186,6 +186,10 @@
     <Compile Include="Migrations\202301161916050_phonetipmigration1.Designer.cs">
       <DependentUpon>202301161916050_phonetipmigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301171818161_phonetipmigration2.cs" />
+    <Compile Include="Migrations\202301171818161_phonetipmigration2.Designer.cs">
+      <DependentUpon>202301171818161_phonetipmigration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Context\MyContext.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301161916050_phonetipmigration1.resx">
       <DependentUpon>202301161916050_phonetipmigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301171818161_phonetipmigration2.resx">
+      <DependentUpon>202301171818161_phonetipmigration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
