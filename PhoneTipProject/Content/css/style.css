@@ -1065,6 +1065,10 @@ footer {
         margin-top: 10px
     }
 
+    .single-news img {
+        max-width:100%;
+    }
+
     .comment-layer ul li .alert-report, .comment-layer ul li .answer-button {
         display: none
     }

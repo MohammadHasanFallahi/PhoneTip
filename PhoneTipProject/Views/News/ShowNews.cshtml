@@ -23,7 +23,7 @@
             <img src="@Model.ImageUrl" class="thumbnail" style="max-width: 100%; margin: 10px auto" />
         </di>
         <p>
-            @Model.Text
+            @Html.Raw(Model.Text)
         </p>
     </article>
 </section>
