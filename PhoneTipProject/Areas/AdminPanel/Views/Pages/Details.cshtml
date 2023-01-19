@@ -40,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Text)
+            @Html.Raw(Model.Text)
         </dd>
 
         <dt>
@@ -88,3 +88,14 @@
     <a class="btn btn-info" href="/AdminPanel/Pages/Index">بازگشت</a> |
     <a class="btn btn-warning" href="/AdminPanel/Pages/Edit/@Model.PageID">ویرایش</a>
 </p>
+
+@section scripts
+{
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#Text').ckeditor();
+        });
+    </script>
+}
