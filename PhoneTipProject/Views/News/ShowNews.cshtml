@@ -38,7 +38,7 @@
     </div>
 
 <section class="comment-layer">
-    <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5><span> @Model.PageComments.Count() دیدگاه </span> </header>
+    <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5>@*<span> @Model.PageComments.Count() دیدگاه </span>*@ </header>
     <ul id="commentList">
 
         @Html.Action("ShowComments", "News")
