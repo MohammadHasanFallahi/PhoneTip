@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace PhoneTipProject.Models.DataLayer
 {
@@ -27,6 +28,7 @@ namespace PhoneTipProject.Models.DataLayer
         [Display(Name = "متن خبر")]
         [Required(ErrorMessage = "لطفا متن خبر را وارد کنید")]
         [DataType(DataType.MultilineText)]
+        [AllowHtml]
         public string Text { get; set; }
         [Display(Name = "بازدید")]
         public int Visit { get; set; }
