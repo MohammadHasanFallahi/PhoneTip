@@ -1,0 +1,11 @@
+﻿@using System.Configuration
+@model PhoneTipProject.Models.DataLayer.Users
+
+<div style="direction:rtl; padding:20px">
+    <h2>@Model.UserName عزیز !</h2>
+    <p>باتشکر از ثبت نام شما در سایت ما ، جهت فعالسازی حساب کاربری خود روی لینک زیر کلیک کنید.</p>
+    <p>
+        <a href="@ConfigurationManager.AppSettings["MyDomain"]/Register/ActiveUser/@Model.ActiveCode">لینک فعالسازی</a>
+    </p>
+
+</div>

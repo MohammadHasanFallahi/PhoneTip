@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using PhoneTipProject.Utilities.ExtensionMethods;
 
 namespace PhoneTipProject.Controllers
 {
@@ -43,6 +44,8 @@ namespace PhoneTipProject.Controllers
                     unitOfWork.Users.Add(user);
                     unitOfWork.Save();
                     unitOfWork.Dispose();
+                    string body = PartialToStringClass.RenderPartialView("ManageEmails", "ActiviationEmail", user);
+                    SendEmail.Send(user.Email, "ایمیل فعالسازی", body);
                     return View("SuccessRegister", user);
                 }
                 else
@@ -58,6 +61,10 @@ namespace PhoneTipProject.Controllers
             return View();
         }
 
+        public ActionResult ActiveUser()
+        {
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
