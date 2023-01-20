@@ -45,10 +45,10 @@ namespace PhoneTipProject.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Emali", "ایمیل وارد شده تکراری می باشد");
+                    ModelState.AddModelError("Email", "ایمیل وارد شده تکراری می باشد");
                 }
-            }
-            return View();
+            } 
+            return View("RegisterUser");
         }
 
         public ActionResult Login()
