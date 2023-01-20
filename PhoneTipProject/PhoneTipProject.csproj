@@ -1465,6 +1465,7 @@
     <Content Include="Views\News\ShowComments.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Register\RegisterUser.cshtml" />
+    <Content Include="Views\Register\SuccessRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

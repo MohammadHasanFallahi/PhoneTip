@@ -1,0 +1,11 @@
+﻿@model PhoneTipProject.Models.DataLayer.Users
+@{
+    ViewBag.Title = "ثبت نام در سایت";
+    Layout = "~/Views/Shared/_DefualtLayoutPage.cshtml";
+}
+
+<div class="alert alert-success">
+     <h3>@Model.UserName عزیز ، باتشکر از ثبت نام شما در سایت ما</h3>
+    <p>ایمیلی حاوی لینک فعالسازی به ایمیل "@Model.Email" ارسال شد ، لطفا وارد ایمیل فوق شوید و بروی لینک کلیک کنید. </p>
+</div>
+

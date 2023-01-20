@@ -18,21 +18,20 @@ namespace PhoneTipProject.Controllers
             return View();
         }
 
-        [HttpGet]
+
         public ActionResult ShowGroups()
         {
             var list_pagegroups = unitOfWork.pagegroup.GetAll().Select(x => new ShowGroupsViewModel() { GroupID = x.GroupID, GroupTitle = x.GroupTitle, PagesCount = x.Pages.Count }).ToList();
             return PartialView(list_pagegroups);
         }
 
-        [HttpGet]
         public ActionResult ShowGroupsInMenu()
         {
             IEnumerable<PagesGroup> pagesGroup = unitOfWork.pagegroup.GetAll();
             return PartialView(pagesGroup);
         }
 
-        [HttpGet]
+
         public ActionResult ShowTopNews()
         {
             var topnews = unitOfWork.Pages.GetAll().OrderByDescending(x => x.Visit).Take(4);
