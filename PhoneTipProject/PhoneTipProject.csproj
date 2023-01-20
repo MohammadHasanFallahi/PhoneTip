@@ -170,6 +170,7 @@
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PagesController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PagesGroupsController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\RolesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1401,6 +1402,11 @@
     <Content Include="ckeditor\_samples\adobeair\run.bat" />
     <Content Include="ckeditor\_samples\adobeair\run.sh" />
     <Content Include="ckeditor\_samples\assets\output_for_flash.fla" />
+    <Content Include="Areas\AdminPanel\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Roles\Details.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Roles\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
