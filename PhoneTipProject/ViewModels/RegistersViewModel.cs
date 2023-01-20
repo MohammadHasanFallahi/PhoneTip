@@ -13,7 +13,7 @@ namespace PhoneTipProject.ViewModels
         public string UserName { get; set; }
         [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا ایمیل خود را وارد کنید")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage ="لطفا ایمیل خود را به درستی ثبت کنید")]
         public string Email { get; set; }
         [Display(Name ="کلمه عبور")]
         [Required(ErrorMessage ="لطفا کلمه عبور خود را وارد کنید")]
