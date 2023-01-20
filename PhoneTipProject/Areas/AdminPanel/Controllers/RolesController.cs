@@ -8,15 +8,16 @@ using System.Web;
 using System.Web.Mvc;
 using PhoneTipProject.Models.Context;
 using PhoneTipProject.Models.DataLayer;
+using PhoneTipProject.Models.UnitOfWork;
 
 namespace PhoneTipProject.Areas.AdminPanel.Controllers
 {
     public class RolesController : Controller
     {
-        private MyContext db = new MyContext();
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
         public ActionResult Index()
         {
-            return View(db.Roles.ToList());
+            return View(unitOfWork.Roles.GetAll());
         }
 
         public ActionResult Details(int? id)
@@ -25,7 +26,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles roles = db.Roles.Find(id);
+            Roles roles = unitOfWork.Roles.Find(id);
             if (roles == null)
             {
                 return HttpNotFound();
@@ -35,7 +36,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -44,8 +45,9 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Add(roles);
-                db.SaveChanges();
+                unitOfWork.Roles.Add(roles);
+                unitOfWork.Save();
+                unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
 
@@ -57,12 +59,12 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles roles = db.Roles.Find(id);
+            Roles roles = unitOfWork.Roles.Find(id);
             if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(roles);
+            return PartialView(roles);
         }
 
         [HttpPost]
@@ -71,8 +73,9 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(roles).State = EntityState.Modified;
-                db.SaveChanges();
+                unitOfWork.Roles.Update(roles);
+                unitOfWork.Save();
+                unitOfWork.Dispose();
                 return RedirectToAction("Index");
             }
             return View(roles);
@@ -84,21 +87,22 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles roles = db.Roles.Find(id);
+            Roles roles = unitOfWork.Roles.Find(id);
             if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(roles);
+            return PartialView(roles);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Roles roles = db.Roles.Find(id);
-            db.Roles.Remove(roles);
-            db.SaveChanges();
+            Roles roles = unitOfWork.Roles.Find(id);
+            unitOfWork.Roles.Remove(roles);
+            unitOfWork.Save();
+            unitOfWork.Dispose();
             return RedirectToAction("Index");
         }
 
@@ -106,7 +110,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

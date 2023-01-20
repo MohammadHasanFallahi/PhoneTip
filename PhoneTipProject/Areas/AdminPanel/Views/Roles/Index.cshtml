@@ -30,9 +30,12 @@
                 @Html.DisplayFor(modelItem => item.RoleName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })
+                <a class="btn btn-sm btn-warning" onclick="btnEdit(@item.RoleID)" data-toggle="bottom" title="ویرایش">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a> |
+                <a class="btn btn-sm btn-danger" onclick="btnDelete(@item.RoleID)" data-toggle="bottom" title="حذف">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
             </td>
         </tr>
     }
@@ -70,6 +73,23 @@
                 $("#myModalBody").html(result);
             });
         });
+
+        function btnEdit(id) {
+
+            $.get("/AdminPanel/Roles/Edit/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("ویرایش");
+                $("#myModalBody").html(result);
+            });
+        }
+
+        function btnDelete(id) {
+            $.get("/AdminPanel/Roles/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("حذف");
+                $("#myModalBody").html(result);
+            });
+        }
 
     </script>
 }

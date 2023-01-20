@@ -14,6 +14,7 @@ namespace PhoneTipProject.Models.UnitOfWork
         public Repository<PagesGroup> pagegroup { get => new Repository<PagesGroup>(context); }
         public Repository<Pages> Pages { get => new Repository<Pages>(context); }
         public Repository<PageComments> PageComments { get => new Repository<PageComments>(context); }
+        public Repository<Roles> Roles { get => new Repository<Roles>(context); }
 
         public void Save()
         {
