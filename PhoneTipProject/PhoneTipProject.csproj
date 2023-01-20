@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +211,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\ExtensionMethods\PersianConvertor.cs" />
+    <Compile Include="ViewModels\RegistersViewModel.cs" />
     <Compile Include="ViewModels\ShowGroupsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1462,6 +1464,7 @@
     <Content Include="Views\News\ShowNews.cshtml" />
     <Content Include="Views\News\ShowComments.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Register\RegisterUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
