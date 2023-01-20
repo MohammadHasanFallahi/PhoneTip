@@ -15,12 +15,14 @@ namespace PhoneTipProject.Controllers
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         [HttpGet]
+        [Route("Register")]
         public ActionResult RegisterUser()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("Register")]
         [ValidateAntiForgeryToken]
         public ActionResult RegisterUser([Bind(Include = "UserName,Email,PassWord,RePassWord")] RegistersViewModel Register)
         {
