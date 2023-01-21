@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using PhoneTipProject.Utilities.ExtensionMethods;
+using System.Net;
 
 namespace PhoneTipProject.Controllers
 {
@@ -61,8 +62,16 @@ namespace PhoneTipProject.Controllers
             return View();
         }
 
-        public ActionResult ActiveUser()
+        public ActionResult ActiveUser(string id)
         {
+            var user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.ActiveCode == id);
+            if(user==null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            user.IsActive = true;
+            user.ActiveCode = Guid.NewGuid().ToString();
+            unitOfWork.Save();
+            unitOfWork.Dispose();
+            ViewBag.username = user.UserName;
             return View();
         }
         protected override void Dispose(bool disposing)
