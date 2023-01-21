@@ -57,6 +57,7 @@ namespace PhoneTipProject.Controllers
             return View("RegisterUser");
         }
 
+        [Route("Login")]
         public ActionResult Login()
         {
             return View();

@@ -1472,6 +1472,7 @@
     <Content Include="Views\Register\SuccessRegister.cshtml" />
     <Content Include="Views\ManageEmails\ActiviationEmail.cshtml" />
     <Content Include="Views\Register\ActiveUser.cshtml" />
+    <Content Include="Views\Register\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
