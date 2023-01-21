@@ -214,6 +214,7 @@
     <Compile Include="Utilities\ExtensionMethods\PartialToStringClass.cs" />
     <Compile Include="Utilities\ExtensionMethods\PersianConvertor.cs" />
     <Compile Include="Utilities\ExtensionMethods\SendEmail.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegistersViewModel.cs" />
     <Compile Include="ViewModels\ShowGroupsViewModel.cs" />
   </ItemGroup>
