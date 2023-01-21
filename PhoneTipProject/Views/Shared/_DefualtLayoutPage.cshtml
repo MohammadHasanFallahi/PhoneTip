@@ -69,6 +69,7 @@
                 <li><a href="/Archive"> آرشیو خبر ها </a></li>
                 <li><a href="/Register"> ثبت نام </a></li>
                 <li><a href="/Login"> ورود به سایت </a></li>
+                <li><a href="/LogOff">خروج</a></li>
                 <li>
                     @Html.Action("ShowGroupsInMenu", "News")
                 </li>
@@ -138,5 +139,6 @@
     <script src="/Content/js/script.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("Scripts", false)
 </body>
 </html>

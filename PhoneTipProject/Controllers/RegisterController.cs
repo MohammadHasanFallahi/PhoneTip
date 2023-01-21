@@ -57,6 +57,7 @@ namespace PhoneTipProject.Controllers
             return View("RegisterUser");
         }
 
+        [HttpGet]
         [Route("Login")]
         public ActionResult Login()
         {
@@ -85,10 +86,17 @@ namespace PhoneTipProject.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Emali", "کاربری با اطلاعات وارد شده یافت نشد!");
+                    ModelState.AddModelError("Email", "کاربری با اطلاعات وارد شده یافت نشد!");
                 }
             }
-            return View(login);
+            return View("Login");
+        }
+
+        [Route("LogOff")]
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("/");
         }
 
         public ActionResult ActiveUser(string id)

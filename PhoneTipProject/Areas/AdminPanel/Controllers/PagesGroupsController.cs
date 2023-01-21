@@ -12,6 +12,7 @@ using PhoneTipProject.Models.UnitOfWork;
 
 namespace PhoneTipProject.Areas.AdminPanel.Controllers
 {
+    [Authorize]
     public class PagesGroupsController : Controller
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
