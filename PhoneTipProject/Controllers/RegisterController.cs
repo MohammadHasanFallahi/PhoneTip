@@ -63,6 +63,34 @@ namespace PhoneTipProject.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public ActionResult Login([Bind(Include = "Email,PassWord,RememberMe")] LoginViewModel login)
+        {
+            if (ModelState.IsValid)
+            {
+                string hashpassword = FormsAuthentication.HashPasswordForStoringInConfigFile(login.PassWord,"MD5");
+                var user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.Email == login.Email && x.PassWord == hashpassword);
+                if (user != null)
+                {
+                    if (user.IsActive)
+                    {
+                        FormsAuthentication.SetAuthCookie(user.UserName, login.RememberMe);
+                        return Redirect("/");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Email", "حساب کاربری شما فعال نشده است!");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("Emali", "کاربری با اطلاعات وارد شده یافت نشد!");
+                }
+            }
+            return View(login);
+        }
+
         public ActionResult ActiveUser(string id)
         {
             var user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.ActiveCode == id);
