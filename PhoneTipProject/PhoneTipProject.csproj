@@ -1473,6 +1473,7 @@
     <Content Include="Views\ManageEmails\ActiviationEmail.cshtml" />
     <Content Include="Views\Register\ActiveUser.cshtml" />
     <Content Include="Views\Register\Login.cshtml" />
+    <Content Include="Views\Shared\_LoggedInUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

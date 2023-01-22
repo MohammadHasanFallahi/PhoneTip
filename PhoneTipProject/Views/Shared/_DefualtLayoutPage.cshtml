@@ -67,9 +67,7 @@
             <ul>
                 <li><a href="/"> صفحه اصلی </a></li>
                 <li><a href="/Archive"> آرشیو خبر ها </a></li>
-                <li><a href="/Register"> ثبت نام </a></li>
-                <li><a href="/Login"> ورود به سایت </a></li>
-                <li><a href="/LogOff">خروج</a></li>
+                @Html.Partial("_LoggedInUser")
                 <li>
                     @Html.Action("ShowGroupsInMenu", "News")
                 </li>
