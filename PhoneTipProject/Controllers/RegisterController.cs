@@ -66,7 +66,7 @@ namespace PhoneTipProject.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public ActionResult Login([Bind(Include = "Email,PassWord,RememberMe")] LoginViewModel login)
+        public ActionResult Login([Bind(Include = "Email,PassWord,RememberMe")] LoginViewModel login, string ReturnUrl = "/")
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace PhoneTipProject.Controllers
                     if (user.IsActive)
                     {
                         FormsAuthentication.SetAuthCookie(user.UserName, login.RememberMe);
-                        return Redirect("/");
+                        return Redirect(ReturnUrl);
                     }
                     else
                     {
