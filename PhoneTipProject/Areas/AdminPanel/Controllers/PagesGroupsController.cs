@@ -12,12 +12,13 @@ using PhoneTipProject.Models.UnitOfWork;
 
 namespace PhoneTipProject.Areas.AdminPanel.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
     public class PagesGroupsController : Controller
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         [HttpGet]
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
         public ActionResult Index()
         {
             return View(unitOfWork.pagegroup.GetAll());

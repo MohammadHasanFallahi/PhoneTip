@@ -13,11 +13,13 @@ using PhoneTipProject.Models.UnitOfWork;
 
 namespace PhoneTipProject.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
     public class PagesController : Controller
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         [HttpGet]
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
         public ActionResult Index()
         {
             var pages = unitOfWork.Pages.GetAll();
@@ -40,6 +42,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
         public ActionResult Create()
         {
             ViewBag.GroupID = new SelectList(unitOfWork.pagegroup.GetAll(), "GroupID", "GroupTitle");
@@ -71,6 +74,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -116,6 +120,7 @@ namespace PhoneTipProject.Areas.AdminPanel.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
