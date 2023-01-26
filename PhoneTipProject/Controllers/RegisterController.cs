@@ -150,8 +150,31 @@ namespace PhoneTipProject.Controllers
         }
 
         [HttpGet]
-        public ActionResult RecoveryPassword()
+        public ActionResult PasswordRecovery()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PasswordRecovery(string id, RecoveryPassword recovery)
+        {
+            if (ModelState.IsValid)
+            {
+                Users user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.ActiveCode == id);
+                if (user != null)
+                {
+                    user.PassWord = FormsAuthentication.HashPasswordForStoringInConfigFile(recovery.PassWord, "MD5");
+                    user.ActiveCode= Guid.NewGuid().ToString();
+                    unitOfWork.Users.Update(user);
+                    unitOfWork.Save();
+                    unitOfWork.Dispose();
+                    return Redirect("/Login?Recovery=true");
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+            }
             return View();
         }
 

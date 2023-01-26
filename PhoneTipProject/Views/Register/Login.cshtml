@@ -7,7 +7,7 @@
 
 <h4>ورود کاربر</h4>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -17,6 +17,14 @@
         <hr />
         <div class="alert alert-danger">
             <p>شما مجوز ورود به بخش درخواست شده را ندارید !</p>
+        </div>
+    }
+
+    @if (Request.QueryString["Recovery"] != null)
+    {
+        <hr />
+        <div class="alert alert-success">
+            <p>کلمه عبور شما با موفقیت تغییر کرد</p>
         </div>
     }
     <hr />

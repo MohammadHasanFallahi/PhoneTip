@@ -211,6 +211,7 @@
     <Compile Include="Utilities\RoleProvider\PhoneTipRoleProvider.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RecoveryPassword.cs" />
     <Compile Include="ViewModels\RegistersViewModel.cs" />
     <Compile Include="ViewModels\ShowGroupsViewModel.cs" />
   </ItemGroup>
@@ -1473,6 +1474,7 @@
     <Content Include="Views\ManageEmails\RecoveryPassword.cshtml" />
     <Content Include="Views\Register\SuccessForgotPassword.cshtml" />
     <Content Include="Views\Register\ForgotPassword.cshtml" />
+    <Content Include="Views\Register\PasswordRecovery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
