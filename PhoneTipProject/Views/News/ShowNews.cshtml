@@ -30,12 +30,12 @@
 
 <div class="keywords border-radius">
 
-        @foreach (var item in Model.Tags.Split(','))
-        {
-            <a href="/Search?q=@item"> @item </a>
-        }
+    @foreach (var item in Model.Tags.Split(','))
+    {
+        <a href="/Search?q=@item"> @item </a>
+    }
 
-    </div>
+</div>
 
 <section class="comment-layer">
     <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5>@*<span> @Model.PageComments.Count() دیدگاه </span>*@ </header>
@@ -44,17 +44,27 @@
         @Html.Action("ShowComments", "News")
 
     </ul>
-
     <h6> شما هم دیدگاه خود را ارسال کنید </h6>
-    <form class="comment-form" action="" method="post">
-        <div>
-            <input placeholder=" نام و نام خانوادگی" type="text" id="txtName">
-            <input placeholder=" ایمیل خود را وارد نمایید " type="email" id="txtEmail">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form class="comment-form" action="" method="post">
+            <div>
+                <input placeholder=" نام و نام خانوادگی" type="text" id="txtName" value="@User.Identity.Name" readonly="true">
+                <input placeholder=" ایمیل خود را وارد نمایید " type="email" id="txtEmail">
 
+            </div>
+            <textarea placeholder=" متن دیدگاه" id="txtComment"> </textarea>
+            <input value="ثبت دیدگاه ارزشمند شما " type="button" onclick="addComment()">
+        </form>
+    }
+    else
+    {
+        <hr />
+        <div class="alert alert-warning">
+            <p>جهت ثبت کامنت وارد پنل کاربری خود شوید</p>
         </div>
-        <textarea placeholder=" متن دیدگاه" id="txtComment"> </textarea>
-        <input value="ثبت دیدگاه ارزشمند شما " type="button" onclick="addComment()">
-    </form>
+        <hr />
+    }
 </section>
 
 <script type="text/javascript">
