@@ -76,24 +76,40 @@ namespace PhoneTipProject.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddComments(int id, string FullName, string Email, string Comment)
+        public ActionResult AddComments(int id, string FullName, string Comment)
         {
-            if (FullName.Trim() != "" && Email.Trim() != "" && Comment.Trim() != "")
+            if (FullName.Trim() != "" && Comment.Trim() != "")
             {
-                PageComments pageComments = new PageComments()
+                if (User.Identity.IsAuthenticated)
                 {
-                    PageID = id,
-                    FullName = FullName,
-                    Email = Email,
-                    Comment = Comment,
-                    CreateDate = DateTime.Now,
-                    IsActive = true
-                };
-                unitOfWork.PageComments.Add(pageComments);
-                unitOfWork.Save();
-                var page_message = unitOfWork.PageComments.GetAll().Where(x => x.PageID == id);
-                unitOfWork.Dispose();
-                return PartialView("ShowComments", page_message);
+                    Users user = unitOfWork.Users.GetAll().Single(x => x.UserName == User.Identity.Name);
+                    if (user != null)
+                    {
+                        PageComments pageComments = new PageComments()
+                        {
+                            PageID = id,
+                            FullName = FullName,
+                            Email = user.Email,
+                            Comment = Comment,
+                            CreateDate = DateTime.Now,
+                            IsActive = true
+                        };
+                        unitOfWork.PageComments.Add(pageComments);
+                        unitOfWork.Save();
+                        var page_message = unitOfWork.PageComments.GetAll().Where(x => x.PageID == id);
+                        unitOfWork.Dispose();
+                        return PartialView("ShowComments", page_message);
+                    }
+                    else
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                    }
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+
             }
             else
             {

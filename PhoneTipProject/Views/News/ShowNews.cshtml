@@ -49,8 +49,8 @@
     {
         <form class="comment-form" action="" method="post">
             <div>
-                <input placeholder=" نام و نام خانوادگی" type="text" id="txtName" value="@User.Identity.Name" readonly="true">
-                <input placeholder=" ایمیل خود را وارد نمایید " type="email" id="txtEmail">
+                <input placeholder=" نام و نام خانوادگی" type="text" id="txtName">
+                @*<input placeholder=" ایمیل خود را وارد نمایید " type="email" id="txtEmail">*@
 
             </div>
             <textarea placeholder=" متن دیدگاه" id="txtComment"> </textarea>
@@ -70,19 +70,19 @@
 <script type="text/javascript">
 
     function addComment() {
-        if ($("#txtName").val().trim() == "" || $("#txtEmail").val().trim() == "" || $("#txtComment").val().trim() == "") {
+        if ($("#txtName").val().trim() == "" || $("#txtComment").val().trim() == "") {
             alert("لطفا جهت ثبت کامنت اطلاعات خود را وارد کنید!");
             return false;
         }
         $.ajax({
             url: "/News/AddComments/" + @Model.PageID,
             type: "Get",
-            data: { FullName: $("#txtName").val(), Email: $("#txtEmail").val(), Comment: $("#txtComment").val() }
+            data: { FullName: $("#txtName").val(), Comment: $("#txtComment").val() }
         }).done(function(result) {
 
             $("#commentList").html(result);
             $("#txtName").val("");
-            $("#txtEmail").val("");
+            //$("#txtEmail").val("");
             $("#txtComment").val("");
 
         });
