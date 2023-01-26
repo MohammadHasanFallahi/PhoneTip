@@ -209,6 +209,7 @@
     <Compile Include="Utilities\ExtensionMethods\PersianConvertor.cs" />
     <Compile Include="Utilities\ExtensionMethods\SendEmail.cs" />
     <Compile Include="Utilities\RoleProvider\PhoneTipRoleProvider.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegistersViewModel.cs" />
     <Compile Include="ViewModels\ShowGroupsViewModel.cs" />
@@ -1469,6 +1470,9 @@
     <Content Include="Views\Register\ActiveUser.cshtml" />
     <Content Include="Views\Register\Login.cshtml" />
     <Content Include="Views\Shared\_LoggedInUser.cshtml" />
+    <Content Include="Views\ManageEmails\RecoveryPassword.cshtml" />
+    <Content Include="Views\Register\SuccessForgotPassword.cshtml" />
+    <Content Include="Views\Register\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -30,16 +30,17 @@ namespace PhoneTipProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!unitOfWork.Users.GetAll().Any(x=>x.Email==Register.Email.Trim().ToLower()))
+                if (!unitOfWork.Users.GetAll().Any(x => x.Email == Register.Email.Trim().ToLower()))
                 {
-                    Users user = new Users(){ 
-                    UserName=Register.UserName.Trim(),
-                    Email=Register.Email.Trim().ToLower(),
-                    IsActive=false,
-                    PassWord=FormsAuthentication.HashPasswordForStoringInConfigFile(Register.PassWord,"MD5"),
-                    ActiveCode=Guid.NewGuid().ToString(),
-                    RegisterDate=DateTime.Now,
-                    RoleID=1
+                    Users user = new Users()
+                    {
+                        UserName = Register.UserName.Trim(),
+                        Email = Register.Email.Trim().ToLower(),
+                        IsActive = false,
+                        PassWord = FormsAuthentication.HashPasswordForStoringInConfigFile(Register.PassWord, "MD5"),
+                        ActiveCode = Guid.NewGuid().ToString(),
+                        RegisterDate = DateTime.Now,
+                        RoleID = 1
                     };
 
                     unitOfWork.Users.Add(user);
@@ -53,7 +54,7 @@ namespace PhoneTipProject.Controllers
                 {
                     ModelState.AddModelError("Email", "ایمیل وارد شده تکراری می باشد");
                 }
-            } 
+            }
             return View("RegisterUser");
         }
 
@@ -70,7 +71,7 @@ namespace PhoneTipProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                string hashpassword = FormsAuthentication.HashPasswordForStoringInConfigFile(login.PassWord,"MD5");
+                string hashpassword = FormsAuthentication.HashPasswordForStoringInConfigFile(login.PassWord, "MD5");
                 var user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.Email == login.Email && x.PassWord == hashpassword);
                 if (user != null)
                 {
@@ -102,7 +103,7 @@ namespace PhoneTipProject.Controllers
         public ActionResult ActiveUser(string id)
         {
             var user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.ActiveCode == id);
-            if(user==null)
+            if (user == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             user.IsActive = true;
             user.ActiveCode = Guid.NewGuid().ToString();
@@ -111,6 +112,49 @@ namespace PhoneTipProject.Controllers
             ViewBag.username = user.UserName;
             return View();
         }
+
+        [Route("ForgotPassword")]
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [Route("ForgotPassword")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(ForgotPasswordViewModel forgot)
+        {
+            if (ModelState.IsValid)
+            {
+                Users user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.Email == forgot.Email);
+                if (user != null)
+                {
+                    if (user.IsActive)
+                    {
+                        string body = PartialToStringClass.RenderPartialView("ManageEmails", "RecoveryPassword",user);
+                        SendEmail.Send(user.Email,"بازیابی کلمه عبور",body);
+                        return View("SuccessForgotPassword",user);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Email", "حساب کاربری شما فعال نیست!");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("Email", "کاربری با این ایمیل یافت نشد!");
+                }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult RecoveryPassword()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
