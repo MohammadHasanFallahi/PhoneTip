@@ -71,6 +71,13 @@
                 <li>
                     @Html.Action("ShowGroupsInMenu", "News")
                 </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        @Html.Action("NewsManagement", "News")
+                    </li>
+                }
+
             </ul>
         </div>
     </nav>

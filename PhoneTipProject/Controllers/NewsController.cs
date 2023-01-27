@@ -123,6 +123,21 @@ namespace PhoneTipProject.Controllers
             var page_message = unitOfWork.PageComments.GetAll().Where(x => x.PageID == id);
             return PartialView(page_message);
         }
+
+        [HttpGet]
+        public ActionResult NewsManagement()
+        {
+            if (unitOfWork.Users.GetAll().Any(x => x.UserName == User.Identity.Name && x.RoleID == 2))
+            { 
+                ViewBag.Active = true;
+                return PartialView();            
+            }
+            else
+            {
+                ViewBag.Active = false;
+                return PartialView();
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
