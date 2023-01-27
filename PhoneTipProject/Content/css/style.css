@@ -16,6 +16,15 @@
     text-rendering: optimizeLegibility;
 }
 
+/************user details***************/
+.form-control:read-only {
+    background-color: #f6f6f6;
+}
+.form-control {
+    border: 1px solid #a0d2eb;
+}
+/************user details***************/
+
 body {
     margin: 0;
     padding: 0;

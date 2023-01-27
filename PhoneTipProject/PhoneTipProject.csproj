@@ -1475,6 +1475,7 @@
     <Content Include="Views\Register\SuccessForgotPassword.cshtml" />
     <Content Include="Views\Register\ForgotPassword.cshtml" />
     <Content Include="Views\Register\PasswordRecovery.cshtml" />
+    <Content Include="Views\Register\ShowUserDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

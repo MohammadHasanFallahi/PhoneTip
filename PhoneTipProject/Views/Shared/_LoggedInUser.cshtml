@@ -1,6 +1,7 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <li><a href="#">@User.Identity.Name خوش آمدید❤ </a></li>
+    <li><a href="/ShowUserDetails">حساب کاربری </a></li>
     <li><a href="/LogOff">خروج</a></li>
 }
 else

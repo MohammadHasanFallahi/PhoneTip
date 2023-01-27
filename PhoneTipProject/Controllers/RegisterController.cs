@@ -132,9 +132,9 @@ namespace PhoneTipProject.Controllers
                 {
                     if (user.IsActive)
                     {
-                        string body = PartialToStringClass.RenderPartialView("ManageEmails", "RecoveryPassword",user);
-                        SendEmail.Send(user.Email,"بازیابی کلمه عبور",body);
-                        return View("SuccessForgotPassword",user);
+                        string body = PartialToStringClass.RenderPartialView("ManageEmails", "RecoveryPassword", user);
+                        SendEmail.Send(user.Email, "بازیابی کلمه عبور", body);
+                        return View("SuccessForgotPassword", user);
                     }
                     else
                     {
@@ -164,7 +164,7 @@ namespace PhoneTipProject.Controllers
                 if (user != null)
                 {
                     user.PassWord = FormsAuthentication.HashPasswordForStoringInConfigFile(recovery.PassWord, "MD5");
-                    user.ActiveCode= Guid.NewGuid().ToString();
+                    user.ActiveCode = Guid.NewGuid().ToString();
                     unitOfWork.Users.Update(user);
                     unitOfWork.Save();
                     unitOfWork.Dispose();
@@ -178,6 +178,53 @@ namespace PhoneTipProject.Controllers
             return View();
         }
 
+        [Route("ShowUserDetails")]
+        [HttpGet]
+        public ActionResult ShowUserDetails()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                Users user = unitOfWork.Users.GetAll().SingleOrDefault(x => x.UserName == User.Identity.Name);
+                if (user != null)
+                return View(user);
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+        }
+
+        [Route("ShowUserDetails")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ShowUserDetails(Users user)
+        {
+            if (user != null && user.UserName.Trim()!= "")
+            {
+                Users edituser = unitOfWork.Users.GetAll().SingleOrDefault(x => x.UserID == user.UserID);
+                if (edituser != null)
+                {
+                    edituser.UserName = user.UserName;
+                    unitOfWork.Users.Update(edituser);
+                    unitOfWork.Save();
+                    unitOfWork.Dispose();
+                    ViewBag.successedit = "ذخیره اطلاعات با موفقیت انجام شد";
+                    return View(edituser);
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+            }
+            else
+            {
+                return Redirect("/");
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
