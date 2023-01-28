@@ -66,11 +66,11 @@
             <span><i class="fa fa-th-list"></i></span>
             <ul>
                 <li><a href="/"> صفحه اصلی </a></li>
-                <li><a href="/Archive"> آرشیو خبر ها </a></li>
-                @Html.Partial("_LoggedInUser")
+                @*<li><a href="/Archive"> آرشیو خبر ها </a></li>*@
                 <li>
                     @Html.Action("ShowGroupsInMenu", "News")
                 </li>
+                @Html.Partial("_LoggedInUser")
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>
