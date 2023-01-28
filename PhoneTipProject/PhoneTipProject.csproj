@@ -1478,6 +1478,7 @@
     <Content Include="Views\Register\PasswordRecovery.cshtml" />
     <Content Include="Views\Register\ShowUserDetails.cshtml" />
     <Content Include="Views\News\NewsManagement.cshtml" />
+    <Content Include="Views\Shared\_UsersControlMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

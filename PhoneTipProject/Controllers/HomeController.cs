@@ -51,7 +51,7 @@ namespace PhoneTipProject.Controllers
                 IsActive=x.IsActive,
                 CreateDate=x.CreateDate
             }).ToList();
-            return PartialView();
+            return View(list_pagecomments);
         }
         protected override void Dispose(bool disposing)
         {
