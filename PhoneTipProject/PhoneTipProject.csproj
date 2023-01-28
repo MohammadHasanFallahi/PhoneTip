@@ -1479,6 +1479,7 @@
     <Content Include="Views\Register\ShowUserDetails.cshtml" />
     <Content Include="Views\News\NewsManagement.cshtml" />
     <Content Include="Views\Shared\_UsersControlMenu.cshtml" />
+    <Content Include="Views\Home\UsersControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
