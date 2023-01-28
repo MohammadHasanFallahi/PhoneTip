@@ -211,6 +211,7 @@
     <Compile Include="Utilities\RoleProvider\PhoneTipRoleProvider.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\PageCommentsViewModel.cs" />
     <Compile Include="ViewModels\RecoveryPassword.cs" />
     <Compile Include="ViewModels\RegistersViewModel.cs" />
     <Compile Include="ViewModels\ShowGroupsViewModel.cs" />
