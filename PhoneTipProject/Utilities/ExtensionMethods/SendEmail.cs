@@ -12,7 +12,7 @@ namespace PhoneTipProject.Utilities.ExtensionMethods
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("mohammad76fallahi.mf@gmail.com","PhoneTip");
+            mail.From = new MailAddress("PhoneTip.ir@gmail.com","PhoneTip");
             mail.To.Add(To);
             mail.Subject = Subject;
             mail.Body = Body;
@@ -23,7 +23,7 @@ namespace PhoneTipProject.Utilities.ExtensionMethods
             // mail.Attachments.Add(attachment);
 
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("mohammad76fallahi.mf@gmail.com", "sprxswqslrhinfde");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("PhoneTip.ir@gmail.com", "nllkkenwvnqitxjh");
             SmtpServer.EnableSsl = true;
 
             SmtpServer.Send(mail);
