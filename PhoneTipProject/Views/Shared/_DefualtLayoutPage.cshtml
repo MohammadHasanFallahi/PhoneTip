@@ -67,9 +67,9 @@
             <ul>
                 <li><a href="/"> صفحه اصلی </a></li>
                 @*<li><a href="/Archive"> آرشیو خبر ها </a></li>*@
-                <li>
+                @*<li>
                     @Html.Action("ShowGroupsInMenu", "News")
-                </li>
+                </li>*@
                 @Html.Partial("_LoggedInUser")
                 @if (User.Identity.IsAuthenticated)
                 {
