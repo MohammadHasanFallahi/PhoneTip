@@ -124,7 +124,7 @@ namespace PhoneTipProject.Controllers
             return PartialView(page_message);
         }
 
-        [HttpGet]
+        
         public ActionResult NewsManagement()
         {
             if (unitOfWork.Users.GetAll().Any(x => x.UserName == User.Identity.Name && x.RoleID == 2))

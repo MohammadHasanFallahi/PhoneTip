@@ -39,6 +39,7 @@ namespace PhoneTipProject.Controllers
             return PartialView(Pages_Slider);
         }
 
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
         public ActionResult UsersControl()
         {
             List<PageCommentsViewModel> list_pagecomments = unitOfWork.PageComments.GetAll().Select(x => new PageCommentsViewModel()
