@@ -7,12 +7,15 @@ using PhoneTipProject.Models.UnitOfWork;
 using PhoneTipProject.Models.DataLayer;
 using PhoneTipProject.ViewModels;
 using PhoneTipProject.Utilities.ExtensionMethods;
+using WebMarkupMin.AspNet4.Mvc;
 
 namespace PhoneTipProject.Controllers
 {
     public class HomeController : Controller
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
+
+        [MinifyHtml]
         public ActionResult Index()
         {
             return View();

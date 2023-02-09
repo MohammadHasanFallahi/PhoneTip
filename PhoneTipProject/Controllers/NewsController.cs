@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PhoneTipProject.Models.DataLayer;
 using PhoneTipProject.Models.UnitOfWork;
 using PhoneTipProject.ViewModels;
+using WebMarkupMin.AspNet4.Mvc;
 
 namespace PhoneTipProject.Controllers
 {
@@ -54,6 +55,7 @@ namespace PhoneTipProject.Controllers
             return View(pages);
         }
 
+        [MinifyHtml]
         [HttpGet]
         [Route("News/{id}")]
         public ActionResult ShowNews(int id)
