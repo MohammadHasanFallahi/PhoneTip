@@ -82,6 +82,10 @@ namespace PhoneTipProject.Controllers
                     }
                     else
                     {
+                        ViewBag.NotActvieUser = false;
+                        ViewBag.Email = user.Email;
+                        string body = PartialToStringClass.RenderPartialView("ManageEmails", "ActiviationEmail", user);
+                        SendEmail.Send(user.Email, "ایمیل فعالسازی", body);
                         ModelState.AddModelError("Email", "حساب کاربری شما فعال نشده است!");
                     }
                 }

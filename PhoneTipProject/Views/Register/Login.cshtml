@@ -54,6 +54,18 @@
             </div>
         </div>
     </div>
+
+    @if (ViewBag.NotActvieUser==false)
+    {
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    <p>کاربر گرامی حساب کاربری شما غیر فعال می باشد.</p>
+                    <p>ایمیلی جهت فعالسازی حساب کاربری شما به ایمیل @ViewBag.Email ارسال شد، لطفا وارد ایمیل فوق شوید و بروی لینک فعالسازی کلیک کنید</p>
+                </div>
+            </div>
+        </div>
+    }
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <a href="/ForgotPassword">کلمه عبور خود را فراموش کرده ام</a>
