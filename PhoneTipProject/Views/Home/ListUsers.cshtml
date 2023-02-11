@@ -1,0 +1,29 @@
+﻿@using PhoneTipProject.Utilities.ExtensionMethods
+@model IEnumerable<PhoneTipProject.Models.DataLayer.Users>
+@{
+    ViewBag.Title = "ListUsers";
+    Layout = "~/Views/Shared/_DefualtLayoutPage.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">نقش کاربر</th>
+            <th scope="col">نام کاربری</th>
+            <th scope="col">وضعیت کاربر</th>
+            <th scope="col">تاریخ ثبت</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Roles.RoleTitel</th>
+                <td>@item.UserName</td>
+                <td><input class="form-check-input" type="checkbox" checked="@item.IsActive" disabled="disabled"></td>
+                <td>@item.RegisterDate.ToShamsi()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -57,6 +57,13 @@ namespace PhoneTipProject.Controllers
             }).ToList();
             return View(list_pagecomments);
         }
+
+        [Authorize(Roles = "Admin", Users = "Admin_PhoneTip")]
+        public ActionResult ListUsers()
+        {
+            IEnumerable<Users> list_users = unitOfWork.Users.GetAll().OrderBy(x=>x.UserID);
+            return View(list_users);
+        }
         protected override void Dispose(bool disposing)
         {
             unitOfWork.Dispose();
